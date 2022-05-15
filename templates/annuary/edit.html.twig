@@ -1,0 +1,42 @@
+{% extends '_partials/main.html.twig' %}
+
+{% block title %}Modifier un annuaire{% endblock %}
+{% block subtitle %}Modifier un annuaire{% endblock %}
+
+{% block content %}
+    <section class="forms">
+        <div class="container-fluid">
+             {# <a href="{{ path('app_seo_index') }}">back to list</a> #}
+            <!-- Page Header-->
+            <header> 
+                <h1  style="text-align: center;">Modifier un annuaire</h1>
+            </header>
+            <div class="row justify-content-md-center"> 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            {{ include('annuary/_form.html.twig') }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Edit Annuary{% endblock %}
+
+{% block body %}
+    <h1>Edit Annuary</h1>
+
+    {{ include('annuary/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_annuary_index') }}">back to list</a>
+
+    {{ include('annuary/_delete_form.html.twig') }}
+{% endblock %}
+ #}

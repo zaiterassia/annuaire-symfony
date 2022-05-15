@@ -1,0 +1,65 @@
+{% extends '_partials/main.html.twig' %}
+
+{% block title %}Liste des sites{% endblock %}
+{% block subtitle %}Liste des sites{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+          <!-- Page Header-->
+          	<header> 
+            	<h1 class="h3 display">Liste des sites</h1>
+          	</header>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table style="width: 100%;" class="table table-striped">
+                        	<thead>
+                            	<tr>
+                                	<th> site  </th>
+                                	<th> Description </th>
+                                	<th> Mots clés </th>
+                                	<th> Auteur </th>
+                                	<th> Modification </th>
+                                	{% if is_granted("ROLE_ADMIN") %}
+                                	<th></th>
+                                	<th></th>
+                                	{% elseif site.author.id == app.user.id %}
+                                	<th></th>
+                                	{% endif %}
+                            	</tr>
+                        	</thead>
+                      		<tbody>
+							            {% for site in sites %}
+                            <tr>
+                               	<td>
+                               		<a onclick="window.open(this.href); return false;" style="text-decoration : none; color : #333;" href="{{ "http://" ~ site.url }}">{{ site.url }}</a>
+                               	</td>
+                                <td>{{ site.description|length > 40 ? site.description|slice(0, 40) ~ '...' : site.description  }}</td>
+                                <td>{{ site.keywords|length > 40 ? site.keywords|slice(0, 40) ~ '...' : site.keywords  }}</td>
+                                <td>{{ site.author.lastname ~ " " ~ site.author.firstname }}</td>
+                                <td>{{ site.editDate ? site.editDate|date('d/m/Y') : '' }}</td>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                <td> <a href="{{ path('app_site_edit', {'id': site.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
+                                </td>
+                                <td>
+                                <form method="post" action="{{ path('app_site_delete', {'id': site.id}) }}" onsubmit="return confirm('Voulez vous supprimer cet élément?');">
+                                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ site.id) }}">
+                                  <button class="btn p-0"><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
+                                </form>
+                                </td>
+                                {% elseif site.author.id == app.user.id %}
+                                <td> <a href="{{ path('app_site_edit', {'id': site.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
+                                </td>
+                                {% endif %}
+                            </tr>
+        					{% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+{% endblock %}

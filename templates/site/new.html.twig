@@ -1,0 +1,52 @@
+{% extends '_partials/main.html.twig' %}
+
+{% block title %}Ajouter un site{% endblock %}
+{% block subtitle %}Ajouter un site{% endblock %}
+
+{% block content %}
+    <section class="forms">
+        <div class="container-fluid">
+             {# <a href="{{ path('app_site_index') }}">back to list</a> #}
+            <!-- Page Header-->
+            <header> 
+                <h1  style="text-align: center;">Ajouter un site</h1>
+            </header>
+            <div class="row justify-content-md-center"> 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            {{ include('site/_form.html.twig') }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block customjs %}
+<script type="text/javascript">
+    function resizeTextArea(textarea) {
+        const { style, value } = textarea;
+
+        // The 4 corresponds to the 2 2px borders (top and bottom):
+        style.height = style.minHeight = 'auto';
+        style.minHeight = `${ Math.min(textarea.scrollHeight + 4, parseInt(textarea.style.maxHeight)) }px`;
+        style.height = `${ textarea.scrollHeight + 4 }px`;
+    }
+    description = document.getElementById("site_description")
+    keywords = document.getElementById("site_keywords")
+    description.addEventListener('input', () => {
+      resizeTextArea(description);
+    });
+    keywords.addEventListener('input', () => {
+      resizeTextArea(keywords);
+    });
+
+</script>
+
+{% endblock %}
+

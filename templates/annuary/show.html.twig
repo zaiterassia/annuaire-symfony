@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annuary{% endblock %}
+
+{% block body %}
+    <h1>Annuary</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annuary.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ annuary.url }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ annuary.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annuary.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annuary_index') }}">back to list</a>
+
+    <a href="{{ path('app_annuary_edit', {'id': annuary.id}) }}">edit</a>
+
+    {{ include('annuary/_delete_form.html.twig') }}
+{% endblock %}

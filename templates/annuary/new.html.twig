@@ -1,0 +1,28 @@
+{% extends '_partials/main.html.twig' %}
+
+{% block title %}Ajouter un annuaire{% endblock %}
+{% block subtitle %}Ajouter un annuaire{% endblock %}
+
+{% block content %}
+    <section class="forms">
+        <div class="container-fluid">
+             {# <a href="{{ path('app_annuary_index') }}">back to list</a> #}
+            <!-- Page Header-->
+            <header> 
+                <h1  style="text-align: center;">Ajouter un annuaire</h1>
+            </header>
+            <div class="row justify-content-md-center"> 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            {{ include('annuary/_form.html.twig') }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

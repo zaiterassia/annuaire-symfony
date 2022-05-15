@@ -1,0 +1,63 @@
+{% extends '_partials/main.html.twig' %}
+
+{% block title %}Liste des annuaires{% endblock %}
+{% block subtitle %}Liste des annuaires{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+          <!-- Page Header-->
+          	<header> 
+            	<h1 class="h3 display">Liste des annuaires</h1>
+          	</header>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="datatable2" style="width: 100%;" class="table table-striped table-sm">
+                        	<thead>
+                            	<tr>
+                                	<th> Lien de l'annuaire  </th>
+                                	<th> Nom de l'annuaire</th>
+                                	<th> Description </th>
+                                	<th> Modification </th>
+                                	{% if is_granted("ROLE_ADMIN") %}
+                                	<th></th>
+                                	<th></th>
+                                	{% elseif annuary.author.id == app.user.id %}
+                                	<th></th>
+                                	{% endif %}
+                            	</tr>
+                        	</thead>
+                      		<tbody>
+							{% for annuary in annuaires %}
+                            <tr>
+                               	<td>
+                               		<a onclick="window.open(this.href); return false;" style="text-decoration : none; color : #333;" href="{{ annuary.url }}">{{ annuary.url }}</a>
+                               	</td>
+                                <td>{{ annuary.name }}</td>
+                                <td>{{ annuary.description|length > 40 ? annuary.description|slice(0, 40) ~ '...' : annuary.description  }}</td>
+                                <td>{{ annuary.dateEdit ? annuary.dateEdit|date('d/m/Y') : '' }}</td>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                <td> <a href="{{ path('app_annuary_edit', {'id': annuary.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
+                                </td>
+                                <td>
+                                <form method="post" action="{{ path('app_annuary_delete', {'id': annuary.id}) }}" onsubmit="return confirm('Voulez vous supprimer cet élément?');">
+                                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annuary.id) }}">
+                                  <button class="btn p-0"><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
+                                </form>
+                                </td>
+                                {% elseif annuary.author.id == app.user.id %}
+                                <td> <a href="{{ path('app_annuary_edit', {'id': annuary.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
+                                </td>
+                                {% endif %}
+                            </tr>
+        					{% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+{% endblock %}

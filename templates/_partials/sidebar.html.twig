@@ -1,0 +1,59 @@
+{% extends "adminbase.html.twig" %}
+{% block body %}
+<nav class="side-navbar">
+  <div class="side-navbar-wrapper">
+    <!-- Sidebar Header    -->
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+      <!-- User Info-->
+      <div class="sidenav-header-inner text-center"><a href="#{# {{ path('app_profile') }} #}"><img src="/img/avatar.png" alt="person" class="img-fluid rounded-circle"></a>
+        <h2 class="h5">
+          {{ app.user.lastname ~ " " ~ app.user.firstname }}
+        </h2><span>{{ app.user.description }}</span>
+      </div>
+      <!-- Small Brand information, appears on minimized sidebar-->
+      <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>{{ app.user.lastname|first ~  app.user.firstname|first }}</strong></a></div>
+    </div>
+    <!-- Sidebar Navigation Menus-->
+    <div class="main-menu">
+      <h5 class="sidenav-heading">Menu</h5>
+      <ul id="side-main-menu" class="side-menu list-unstyled">                  
+        <li><a href="{{ path('app_main') }}"> <i class="icon-home"></i>Accueil</a></li>
+        <li><a href="#dropdown0" aria-expanded="false" data-toggle="collapse"> <i class="icon-presentation"></i>Référencements</a>
+          <ul id="dropdown0" class="collapse list-unstyled ">
+            <li><a href="{{ path('app_seo_index') }}" >Liste des référencements</a></li>
+            <li><a href="{{ path('app_seo_new') }}">Ajouter un référencement</a></li>
+          </ul>
+        </li>
+        <li><a href="#dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-website"></i>Sites référencés</a>
+          <ul id="dropdown1" class="collapse list-unstyled ">
+            <li><a href="{{ path('app_site_index') }}">Liste des sites</a></li>
+            <li><a href="{{ path('app_site_new') }}">Ajouter un site</a></li>
+          </ul>
+        </li>
+        <li><a href="#dropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Annuaires</a>
+          <ul id="dropdown2" class="collapse list-unstyled ">
+            <li><a href="{{ path('app_annuary_index') }}" >Liste des annuaires</a></li>
+            <li><a href="{{ path('app_annuary_new') }}">Ajouter un annuaire</a></li>
+          </ul>
+        </li>
+        {% if is_granted("ROLE_ADMIN") %}
+        <li><a href="#dropdown3" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Utilisateurs</a>
+          <ul id="dropdown3" class="collapse list-unstyled ">
+            <li><a href="{{ path('app_user_index') }}">Liste des utilisateurs</a></li>
+            <li><a href="{{ path('app_user_new') }}">Ajouter un utilisateur</a></li>              
+          </ul>
+        </li>
+        {% endif %}
+        {# <li><a href="#dropdown4" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Contenu</a>
+          <ul id="dropdown4" class="collapse list-unstyled ">
+          {% for site in sites %}
+            <li><a href="{{ path('app_site_index', { 'id': site.id }) }}>{{ site.url }}</a></li>
+          {% endfor %}
+          </ul>
+        </li> #}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% block contentpage %}{% endblock %}
+{% endblock %}

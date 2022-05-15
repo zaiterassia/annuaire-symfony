@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="submit form-group row">
+      <div class="col-sm-4 offset-sm-5">
+        <button type="submit" class="btn btn-secondary" onclick="history.back();">Annuler</button>
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+      </div>
+    </div>
+{{ form_end(form) }}

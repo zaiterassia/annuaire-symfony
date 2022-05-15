@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block metas %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta charset="UTF-8">
+    <!-- Favicon-->
+    <link rel="icon" href="{{ asset('img/notebook.jfif') }}" type="image/ico" />
+{% endblock %}
+{% block stylesheets %}
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="{{ asset('css/fontastic.css') }}">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" href="{{ asset('vendor/datatable/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/datatable/responsive.bootstrap4.min.css') }}">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="{{ asset('css/grasp_mobile_progress_circle-1.0.0.css') }}">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet" href="{{ asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+{% endblock %}
+
+{% block bodyclass %} class="nav-md" {% endblock %}
+{% block body %}
+    <div class="container body">
+        <div class="main_container">
+            {% block bars %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- JavaScript files-->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/grasp_mobile_progress_circle-1.0.0.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+    <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    {% if app.request.get('_route') == 'app_main' %}
+        <script src="{{ asset('js/script.js') }}"></script>
+    {% endif %}
+
+    <!-- Data Tables-->
+    <script src="{{ asset('vendor/datatable/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('vendor/datatable/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('vendor/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatable/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatable/tables-datatable.js') }}"></script>
+    <!-- Main File-->
+    <script src="{{ asset('js/front.js') }}"></script>
+    {% block customjs %} {% endblock %}
+
+{% endblock %}
