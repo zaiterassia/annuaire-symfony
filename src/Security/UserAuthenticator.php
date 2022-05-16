@@ -22,7 +22,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    private UrlGeneratorInterface $urlGenerator;
+    private $urlGenerator;
 
     private $userRepository;
 

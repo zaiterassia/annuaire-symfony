@@ -29,8 +29,8 @@ class ResetPasswordController extends AbstractController
 {
     use ResetPasswordControllerTrait;
 
-    private ResetPasswordHelperInterface $resetPasswordHelper;
-    private EntityManagerInterface $entityManager;
+    private $resetPasswordHelper;
+    private $entityManager;
 
     public function __construct(ResetPasswordHelperInterface $resetPasswordHelper, EntityManagerInterface $entityManager)
     {

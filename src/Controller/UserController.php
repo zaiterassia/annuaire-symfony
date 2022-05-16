@@ -19,7 +19,7 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 class UserController extends AbstractController
 {
 
-    private UserPasswordHasherInterface $hasher;
+    private $hasher;
 
     public function __construct(UserPasswordHasherInterface $hasher)
     {

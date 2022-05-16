@@ -10,7 +10,7 @@ use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
-    private UserPasswordHasherInterface $hasher;
+    private $hasher;
 
     public function __construct(UserPasswordHasherInterface $hasher)
     {
