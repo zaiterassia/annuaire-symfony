@@ -24,7 +24,7 @@
                                 	{% if is_granted("ROLE_ADMIN") %}
                                 	<th></th>
                                 	<th></th>
-                                	{% elseif site.author.id == app.user.id %}
+                                	{% else %}
                                 	<th></th>
                                 	{% endif %}
                             	</tr>

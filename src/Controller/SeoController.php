@@ -79,7 +79,7 @@ class SeoController extends AbstractController
             return $this->redirectToRoute('app_seo_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('Seo/edit.html.twig', [
+        return $this->renderForm('seo/edit.html.twig', [
             'seo' => $seo,
             'form' => $form,
         ]);
