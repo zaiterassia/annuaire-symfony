@@ -1,12 +1,53 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'adminbase.html.twig' %}
+{% block stylesheets %}
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" id="theme-stylesheet">
+{% endblock %}
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
-
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+<div class="page login-page">
+  <div class="container">
+    <div class="form-outer text-center d-flex align-items-center">
+      <div class="form-inner">
+        <div class="logo text-uppercase"><strong class="text-primary"> New Password </strong></div>
+            <div class="form-group-material form-group text-center">
+                <p>Reset your password</p>
+                <form method="POST" action="scriptBD_newpassword.php" class="text-left form-validate">
+              <div class="form-group-material" style="margin-bottom:1px;  ">
+                <input id="password" type="password" name="password" required data-msg="Veuillez renseigner votre mot de passe" data-rule-minlength="6" data-msg-minlength="Le mot de passe doit comprendre au moins 6 caractères." class="input-material">
+                <label for="password" class="label-material">Password:
+                <div class="icons">
+                        <i data-feather="eye"></i>
+                        <i data-feather="eye-off"></i>
+                </div>
+                </label>
+              </div>
+              <div class="form-group-material"style="margin-bottom:1px; margin-top:24px; ">
+                <input id="password2" type="password" name="password2" required data-msg="Veuillez confirmer votre mot de passe" data-rule-equalto="#password" data-msg-equalto="Les mots de passe ne correspondent pas" class="input-material">
+                <label for="password2" class="label-material">Confirm your password:</label>
+                    
+              </div>
+              <div class="form-group text-center" style="padding-top: 29px;">
+                <input id="newpassword" type="submit" value="Modifier" class="btn btn-primary">
+                </div>
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('js/front.js') }}"></script>
+    <script src="{{ asset('js/icon-eyes.js') }}"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script> feather.replace(); </script>
+     {% block customjs %}{% endblock %}{% endblock %}

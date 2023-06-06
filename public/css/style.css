@@ -3424,6 +3424,74 @@ a>code {
     max-width: 300px;
 }
 
+.password-icon {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left:1072px;
+    top: 52%;
+    transform: translateY(-50%);
+    width: 62px;
+    color: #ffc080;
+    transition: all 0.2s;
+  }
+
+.password-icon:hover {
+    cursor: pointer;
+    color: #ff8000;
+  }
+  
+.password-icon .feather-eye-off {
+    display: none;
+  }
+  .icon-plus{
+    display: flex;
+    margin-bottom: -6px;
+    margin-top: -3px;
+    margin-left: -10px;
+    width:30px;
+  }
+  .icons{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    left: 962px;
+    justify-content: center;
+    transform: translateY(-50%);
+    width:62px;
+    height: 36px;
+    color:#ffc000;
+    transition: all 0.2s;
+    overflow: hidden;
+    top:46%;
+  }
+
+  .icons:hover{
+    cursor:pointer;
+    color:#ff8000;
+  }
+
+  .icons .feather-eye-off{
+    display: none;
+  }
+
+  .button-add{
+    display:flex;
+    margin-left: auto;
+  }
+
+  .link-add{
+    margin-left: 94%;
+  }
+
+  .link-add:hover{
+    text-decoration:none;
+  }
+
+  .link-color{
+    color: darkgray !important;
+  }
+
 @media (min-width: 576px) {
     .card-deck {
         margin-right: -15px;
