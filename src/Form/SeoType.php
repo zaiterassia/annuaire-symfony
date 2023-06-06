@@ -27,7 +27,10 @@ class SeoType extends AbstractType
             ->add('username', null, ['label' => 'Identifiant/Email'])
             ->add('password', null, ['label' => 'Mot de passe'])
             ->add('responseUrl', null, ['label' => 'Lien retour'])
-            ->add('observations', TextareaType::class, ['label' => 'Observations'])
+            ->add('observations', TextareaType::class, array(
+                'required' => false,
+                'label' => 'Observations',
+                ))
 
         ;
     }

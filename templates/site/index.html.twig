@@ -9,11 +9,14 @@
           <!-- Page Header-->
           	<header> 
             	<h1 class="h3 display">Liste des sites</h1>
+              <a href="{{ path('app_site_new') }}" class='link-add'>
+                <button type="button" class="btn btn-secondary button-add"> <img src="{{ asset('img/plus.svg') }}" class="icon-plus"> Ajouter </button>
+              </a>
           	</header>
               <div class="card">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table style="width: 100%;" class="table table-striped">
+                    <table id="datatable2" style="width: 100%;" class="table table-striped">
                         	<thead>
                             	<tr>
                                 	<th> site  </th>
@@ -24,7 +27,7 @@
                                 	{% if is_granted("ROLE_ADMIN") %}
                                 	<th></th>
                                 	<th></th>
-                                	{% elseif site.author.id == app.user.id %}
+                                	{% else %}
                                 	<th></th>
                                 	{% endif %}
                             	</tr>

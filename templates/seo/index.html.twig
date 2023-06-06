@@ -9,11 +9,14 @@
           <!-- Page Header-->
           	<header> 
             	<h1 class="h3 display">Liste des référencements</h1>
+              <a href="{{ path('app_seo_new') }}" class='link-add'>
+                <button type="button" class="btn btn-secondary button-add"> <img src="{{ asset('img/plus.svg') }}" class="icon-plus"> Ajouter </button>
+              </a>
           	</header>
             <div class="card">
                 <div class="card-body">
                   	<div class="table-responsive">
-                    	<table id="datatable1" style="width: 100%;" class="table table-striped table-sm">
+                    	<table id="datatable2" style="width: 100%;" class="table table-striped table-sm">
                         	<thead>
                             	<tr>
                                 	<th> Annuaire </th>
@@ -22,10 +25,8 @@
                                 	<th> Identifiant/Mail </th>
                                 	<th> Observations </th>
                                 	<th> Modification </th>
-                                	{% if is_granted("ROLE_ADMIN") %}
-                                	<th></th>
-                                	<th></th>
-                                	{% elseif seo.author.id == app.user.id %}
+                                    <th></th>
+                               	    {% if is_granted("ROLE_ADMIN") %}
                                 	<th></th>
                                 	{% endif %}
                             	</tr>
@@ -43,17 +44,14 @@
                                 <td>{{ seo.username }}</td>
                                 <td>{{ seo.observations }}</td>
                                 <td>{{ seo.editDate ? seo.editDate|date('d/m/Y') : '' }}</td>
-                                {% if is_granted("ROLE_ADMIN") %}
                                 <td> <a href="{{ path('app_seo_edit', {'id': seo.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
                                 </td>
+                                {% if is_granted("ROLE_ADMIN") %}
                                 <td>
                                 <form method="post" action="{{ path('app_seo_delete', {'id': seo.id}) }}" onsubmit="return confirm('Voulez vous supprimer cet élément?');">
                                   <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seo.id) }}">
                                   <button class="btn p-0"><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
                                 </form>
-                                </td>
-                                {% elseif seo.author.id == app.user.id %}
-                                <td> <a href="{{ path('app_seo_edit', {'id': seo.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
                                 </td>
                                 {% endif %}
                             </tr>
