@@ -1608,6 +1608,16 @@ button {
     cursor: pointer;
 }
 
+.togglePassword {
+    position: absolute;
+    right: 9px;
+    top: 12px;
+    stroke: #ffc080;
+    cursor: pointer;
+}
+.togglePassword:hover {
+    stroke: #ff7f00
+}
 
 /*
 * ==========================================================
@@ -3423,23 +3433,6 @@ a>code {
 .sorting_asc {
     max-width: 300px;
 }
-
-.password-icon {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left:1072px;
-    top: 52%;
-    transform: translateY(-50%);
-    width: 62px;
-    color: #ffc080;
-    transition: all 0.2s;
-  }
-
-.password-icon:hover {
-    cursor: pointer;
-    color: #ff8000;
-  }
   
 .password-icon .feather-eye-off {
     display: none;
