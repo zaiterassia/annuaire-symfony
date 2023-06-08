@@ -1,5 +1,6 @@
 {% extends 'adminbase.html.twig' %}
 {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" id="theme-stylesheet">
 {% endblock %}
@@ -13,15 +14,12 @@
         <div class="logo text-uppercase"><strong class="text-primary"> New Password </strong></div>
             <div class="form-group-material form-group text-center">
                 <p>Reset your password</p>
-                <form method="POST" action="scriptBD_newpassword.php" class="text-left form-validate">
+                <form method="POST" action="{{ path('app_reset_password') }}" class="text-left form-validate">
               <div class="form-group-material" style="margin-bottom:1px;  ">
                 <input id="password" type="password" name="password" required data-msg="Veuillez renseigner votre mot de passe" data-rule-minlength="6" data-msg-minlength="Le mot de passe doit comprendre au moins 6 caractères." class="input-material">
-                <label for="password" class="label-material">Password:
-                <div class="icons">
-                        <i data-feather="eye"></i>
-                        <i data-feather="eye-off"></i>
-                </div>
-                </label>
+                <i data-feather="eye" class="togglePassword"></i>
+                <i data-feather="eye-off" class="togglePassword" ></i>
+                <label for="password" class="label-material">Password:</label>
               </div>
               <div class="form-group-material"style="margin-bottom:1px; margin-top:24px; ">
                 <input id="password2" type="password" name="password2" required data-msg="Veuillez confirmer votre mot de passe" data-rule-equalto="#password" data-msg-equalto="Les mots de passe ne correspondent pas" class="input-material">
@@ -29,7 +27,7 @@
                     
               </div>
               <div class="form-group text-center" style="padding-top: 29px;">
-                <button class="btn btn-primary">Reset password</button>
+                <button class="btn btn-primary" >Reset password</button>
                 </div>
             </form>
                 </div>

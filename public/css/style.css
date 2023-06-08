@@ -1619,6 +1619,7 @@ button {
     stroke: #ff7f00
 }
 
+
 /*
 * ==========================================================
 *     FORMS GENERAL
@@ -3443,29 +3444,6 @@ a>code {
     margin-top: -3px;
     margin-left: -10px;
     width:30px;
-  }
-  .icons{
-    display: flex;
-    position: fixed;
-    align-items: center;
-    left: 962px;
-    justify-content: center;
-    transform: translateY(-50%);
-    width:62px;
-    height: 36px;
-    color:#ffc000;
-    transition: all 0.2s;
-    overflow: hidden;
-    top:46%;
-  }
-
-  .icons:hover{
-    cursor:pointer;
-    color:#ff8000;
-  }
-
-  .icons .feather-eye-off{
-    display: none;
   }
 
   .button-add{
