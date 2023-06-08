@@ -2,7 +2,7 @@
 {% form_theme requestForm with ['foundation_5_layout.html.twig'] only %}
 {% extends 'adminbase.html.twig' %}
 
-{% block title %}Reset password{% endblock %}
+{% block title %}réinitialiser le mot de passe{% endblock %}
 
 {% block stylesheets %}
     <!-- Bootstrap CSS-->
@@ -33,7 +33,7 @@
         </div>
         <button class="btn btn-primary">Reset password</button>
         {{ form_end(requestForm) }}
-        <a href="{{ path('app_login') }}" class="forgot-pass">retour page de connexion</a>
+        <a href="{{ path('app_login') }}" class="forgot-pass">Retour page de connexion</a>
       </div>
     </div>
   </div>

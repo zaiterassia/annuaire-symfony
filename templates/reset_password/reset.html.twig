@@ -1,51 +1,75 @@
+
+{% form_theme resetForm with ['foundation_5_layout.html.twig'] only %}
 {% extends 'adminbase.html.twig' %}
+
+{% block title %}réinitialiser le mot de passe{% endblock %}
+
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 {% endblock %}
-{% block title %}Reset your password{% endblock %}
 
 {% block body %}
 <div class="page login-page">
   <div class="container">
     <div class="form-outer text-center d-flex align-items-center">
       <div class="form-inner">
-        <div class="logo text-uppercase"><strong class="text-primary"> New Password </strong></div>
-            <div class="form-group-material form-group text-center">
-                <p>Reset your password</p>
-                <form method="POST" action="{{ path('app_reset_password') }}" class="text-left form-validate">
-              <div class="form-group-material" style="margin-bottom:1px;  ">
-                <input id="password" type="password" name="password" required data-msg="Veuillez renseigner votre mot de passe" data-rule-minlength="6" data-msg-minlength="Le mot de passe doit comprendre au moins 6 caractères." class="input-material">
-                <i data-feather="eye" class="togglePassword"></i>
-                <i data-feather="eye-off" class="togglePassword" ></i>
-                <label for="password" class="label-material">Password:</label>
-              </div>
-              <div class="form-group-material"style="margin-bottom:1px; margin-top:24px; ">
-                <input id="password2" type="password" name="password2" required data-msg="Veuillez confirmer votre mot de passe" data-rule-equalto="#password" data-msg-equalto="Les mots de passe ne correspondent pas" class="input-material">
-                <label for="password2" class="label-material">Confirm your password:</label>
-                    
-              </div>
-              <div class="form-group text-center" style="padding-top: 29px;">
-                <button class="btn btn-primary" >Reset password</button>
-                </div>
-            </form>
-                </div>
-            </div>
+        <div class="logo text-uppercase"><strong class="text-primary">nouveau mot de passe</strong></div>
+        <p>Entrez un nouveau mot de passe.</p>
+        
+        {% for flash_error in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger alert-dismissible" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+        {{ form_start(resetForm) }}
+        <div class="form-group-material">
+            {{ form_widget(resetForm.plainPassword.first) }}
+            {{ form_label(resetForm.plainPassword.first) }}
         </div>
+        <div class="form-group-material">
+            {{ form_widget(resetForm.plainPassword.second) }}
+            {{ form_label(resetForm.plainPassword.second) }}
+        </div>
+
+        <button class="btn btn-primary">initialiser le mot de passe</button>
+        {{ form_end(resetForm) }}
+        <a href="{{ path('app_login') }}" class="forgot-pass">Retour page de connexion</a>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 </div>
 {% endblock %}
-
 {% block javascripts %}
+    <!-- JavaScript files-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <!-- Main File-->
     <script src="{{ asset('js/front.js') }}"></script>
-    <script src="{{ asset('js/icon-eyes.js') }}"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script> feather.replace(); </script>
-     {% block customjs %}{% endblock %}{% endblock %}
+    {% block customjs %} {% endblock %}
+
+{% endblock %}
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+
+    <h1>Reset your password</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Reset password</button>
+    {{ form_end(resetForm) }}
+
+{% endblock %} #}
