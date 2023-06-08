@@ -138,4 +138,10 @@ $(document).ready(function() {
         $('<div class="line"></div>').insertAfter($(this));
     });
 
+    // ------------------------------------------------------ //
+    // Alert customise
+    // ------------------------------------------------------ //
+
+    $('#seo_annuary').select2();
+
 });

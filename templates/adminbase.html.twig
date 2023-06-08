@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
 {% endblock %}
 
 {% block bodyclass %} class="nav-md" {% endblock %}
@@ -59,6 +60,7 @@
     <script src="{{ asset('vendor/datatable/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('vendor/datatable/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('vendor/datatable/tables-datatable.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
     <!-- Main File-->
     <script src="{{ asset('js/front.js') }}"></script>
     {% block customjs %} {% endblock %}
