@@ -19,16 +19,28 @@ class SeoController extends AbstractController
     /**
      * @Route("/", name="app_seo_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
-        $seos = $entityManager
+        $response = $request->query->get('response');
+
+        if ($response === 'accepted') {
+            $seos = $entityManager->getRepository(Seo::class)->findBy(['response' => 'oui']);
+        } elseif ($response === 'pending') {
+            $seos = $entityManager->getRepository(Seo::class)->findBy(['response' => 'en attente']);
+        } else {
+            // Si aucun paramètre n'est spécifié, affichez tous les résultats
+            $seos = $entityManager
             ->getRepository(Seo::class)
             ->findBy([], ['editDate' => 'DESC']);;
+        }
+        
 
         return $this->render('seo/index.html.twig', [
             'seos' => $seos,
         ]);
     }
+
+    
 
     /**
      * @Route("/new", name="app_seo_new", methods={"GET", "POST"})
