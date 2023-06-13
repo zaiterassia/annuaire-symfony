@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Site;
+use App\Entity\Seo;
 use App\Form\SiteType;
 use App\Repository\SiteRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,10 +58,15 @@ class SiteController extends AbstractController
     /**
      * @Route("/{id}", name="app_site_show", methods={"GET"})
      */
-    public function show(Site $site): Response
+    public function show(EntityManagerInterface $entityManage, Site $site): Response
     {
+        $seoRepo = $entityManage->getRepository(Seo::class);
+        $accpeted = sizeof($seoRepo->findBy(['site' => $site->getId(), 'response' => "oui"]));
         return $this->render('site/show.html.twig', [
             'site' => $site,
+            'accepted' => $accpeted,
+            'waited' => 3,
+            'rejected' => 1
         ]);
     }
 

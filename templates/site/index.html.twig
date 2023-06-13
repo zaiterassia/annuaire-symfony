@@ -36,10 +36,11 @@
 							            {% for site in sites %}
                             <tr>
                                	<td>
-                               		<a onclick="window.open(this.href); return false;" style="text-decoration : none; color : #333;" href="{{ "http://" ~ site.url }}">{{ site.url }}</a>
+                               		<a style="text-decoration : underline; color : #333;" href="{{ path('app_site_show', {'id': site.id}) }}">{{ site.url }}</a>
+                                  <a href="{{ "https://" ~ site.url }}" target="_black" style="margin-left: 5px;"><i class="fa fa-external-link" aria-hidden="true"></i></a>
                                	</td>
-                                <td>{{ site.description|length > 40 ? site.description|slice(0, 40) ~ '...' : site.description  }}</td>
-                                <td>{{ site.keywords|length > 40 ? site.keywords|slice(0, 40) ~ '...' : site.keywords  }}</td>
+                                <td>{{ site.description|length > 40 ? site.description|slice(0, 30) ~ '...' : site.description  }}</td>
+                                <td>{{ site.keywords|length > 40 ? site.keywords|slice(0, 30) ~ '...' : site.keywords  }}</td>
                                 <td>{{ site.author.lastname ~ " " ~ site.author.firstname }}</td>
                                 <td>{{ site.editDate ? site.editDate|date('d/m/Y') : '' }}</td>
                                 {% if is_granted("ROLE_ADMIN") %}
