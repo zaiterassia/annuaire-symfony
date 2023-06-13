@@ -10,7 +10,7 @@
       <!-- Count item widget-->
       <div class="col-xl-3 col-md-3 col-6">
         <div class="wrapper count-title d-flex">
-          <div class="icon"><i class="icon-user"></i></div>
+          <div class="icon"><a href="{{ path('app_user_index') }}"><i class="icon-user"></i></a></div>
           <div class="name"><strong class="text-uppercase">Membres</strong><span>utilisateur de l'annuaire</span>
             <div class="count-number">
               {{ totalUsers }}
@@ -21,7 +21,7 @@
       <!-- Count item widget-->
       <div class="col-xl-3 col-md-3 col-6">
         <div class="wrapper count-title d-flex">
-          <div class="icon"><i class="icon-website"></i></div>
+          <div class="icon"><a href="{{ path('app_site_index') }}"><i class="icon-website"></i></a></div>
           <div class="name"><strong class="text-uppercase">Sites référencés</strong><span>dans l'annuaire</span>
             <div class="count-number">
              {{ totalSites }}
@@ -32,7 +32,7 @@
       <!-- Count item widget-->
       <div class="col-xl-3 col-md-3 col-6">
         <div class="wrapper count-title d-flex">
-          <div class="icon"><i class="icon-page"></i></div>
+          <div class="icon"><a href="{{ path('app_annuary_index') }}"><i class="icon-page"></i></a></div>
           <div class="name"><strong class="text-uppercase">Annuaires</strong><span>annaires de référencement</span>
             <div class="count-number">
              {{ totalAnnuaries }}                   
@@ -43,7 +43,7 @@
       <!-- Count item widget-->
       <div class="col-xl-3 col-md-3 col-6">
         <div class="wrapper count-title d-flex">
-          <div class="icon"><i class="icon-presentation"></i></div>
+          <div class="icon"><a href="{{ path('app_seo_index') }}"><i class="icon-presentation"></a></i></div>
           <div class="name"><strong class="text-uppercase">Référencement</strong><span>Demande de Référencement</span>
             <div class="count-number">
              {{ totalSeos }}                   
@@ -61,18 +61,18 @@
       <div class="col-lg-4">
         <div class="card income text-center">
           <div class="icon"><i class="icon-line-chart"></i></div>
-          <div class="number">{{ accepted  }}</div><strong class="text-primary">référencement accepté</strong>
+          <div class="number">{{ accepted  }}</div><strong class="text-primary"><a href="{{ path('app_seo_index', {'response': 'accepted'}) }}">référencement accepté<a></strong>
           <p>{{ accepted  }} référencement de site ont été accepté dans les annuaires.</p>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="card data-usage">
+        <div class="card data-usage" style="top:-25px;">
           <h2 class="display h4">demande en attente</h2>
           <div class="row d-flex align-items-center">
             <div class="col-sm-6">
               <div id="progress-circle" data-rate = {{ waited == 0 ? 0 : waited /totalSeos * 100  }} class="d-flex align-items-center justify-content-center"></div>
             </div>
-            <div class="col-sm-6"><strong class="text-primary">{{ waited  }}</strong><span>Demande en cours</span></div>
+            <div class="col-sm-6"><strong class="text-primary">{{ waited  }}</strong><span><a href="{{ path('app_seo_index', {'response': 'pending'}) }}" style="display:block;">Demande en cours</a></span></div>
           </div>
           <a href="{{ path('app_seo_index') }}" style="color: black">Visualisez la liste pour plus de détails.</a>
         </div>
