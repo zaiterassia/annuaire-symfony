@@ -23,7 +23,7 @@
                                 	<th> Site référencé </th>
                                 	<th> Réponse </th>
                                 	<th> Identifiant/Mail </th>
-                                	<th> Observations </th>
+                                	<th> auteur </th>
                                 	<th> Modification </th>
                                     <th></th>
                                	    {% if is_granted("ROLE_ADMIN") %}
@@ -42,7 +42,7 @@
                                	</td>
                                 <td>{{ seo.response }}</td>
                                 <td>{{ seo.username }}</td>
-                                <td>{{ seo.observations }}</td>
+                                <td>{{ seo.author.getFirstname() }} {{ seo.author.getLastname() }}</td>
                                 <td>{{ seo.editDate ? seo.editDate|date('d/m/Y') : '' }}</td>
                                 <td> <a href="{{ path('app_seo_edit', {'id': seo.id}) }}" title="Modifier"> <i class="fa fa-pencil" style="font-size:20px;color:blue"></i></a>
                                 </td>

@@ -1,11 +1,6 @@
 /*global $, document, LINECHARTEXMPLE*/
 $(document).ready(function () {
-
     'use strict';
-
-    var accepted = accepted_number;
-    var waited = waited_number;
-    var inaccepted = inaccepted_number;
 
     var accepted_color = 'rgba(51, 179, 90, 1)';
     var waited_color = 'rgb(240, 173, 78, 1)';
@@ -24,7 +19,7 @@ $(document).ready(function () {
             ],
             datasets: [
                 {
-                    data: [accepted_number, waited_number, inaccepted_number],
+                    data: [accepted, waited, rejected],
                     borderWidth: [1, 1, 1],
                     backgroundColor: [
                         accepted_color,

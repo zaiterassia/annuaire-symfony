@@ -4,21 +4,61 @@
 {% block subtitle %} site.url{% endblock %}
 
 {% block content %}
-    <h1>Site</h1>
+<div class="title-show"> <h1>{{site_name}}</h1></div>
+   
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>accpeted</th>
-                <td>{{ accepted }}</td>
-            </tr>
+    <table class="table-site">
+    <tr>
+        <td>
+            <div class="col-lg-6">
+            <div class="card pie-chart-example" style="left: 159px; width: 166%; padding-bottom: 26%;">
+              <div class="card-header d-flex align-items-center">
+                <h3 class="card-title">Liste des annuaires</h3>
+              </div>
+              <div class="card-body">
+                  <div class="chart-container">
+            {% for seo in seos %}
+                {% if seo.getResponse() == 'oui'  %}
+                	<img src="{{ asset('img/check.svg') }}" class="check-icon">
+                	{{seo.getAnnuary()}}<br>
+                {% elseif seo.getResponse() == 'en attente' %}
+                	<img src="{{ asset('img/caution.svg') }}" class="check-icon">
+                	{{seo.getAnnuary()}}<br>
+                {% elseif seo.getResponse() == 'non' %}
+                	<img src="{{ asset('img/close.svg') }}" class="check-icon">
+                	{{seo.getAnnuary()}}<br>
+                {% endif %}
+            {% endfor %}
+        <div class="float-right"><a href="{{ path('app_seo_index', {'response': 'site','id': site.id}) }}" ><p>Visualiser la liste pour plus de details</p></a></div>
+        </div>
+    </div>
+        </td>
+        <td>
+                {% if (accepted != 0) and (waited != 0) and (rejected != 0) %}
+                <div class="col-lg-6">
+                    <div class="card pie-chart-example" style="left: -9%; width: 166%;">
+                      <div class="card-header d-flex align-items-center">
+                        <h3 class="card-title">Représentation des données</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="chart-container">
+                          <canvas id="pieChartExample"></canvas>
+                        </div>
+                {% else %}
+                    <p style="text-align: center;">  Aucune donnée à afficher </p>
+                {% endif %}
+                </td>
+            </tr>   
+        </table>
+
+            <table class="table">     
             <tr>
                 <th>Id</th>
-                <td>{{ site.id }}</td>
+                <td colspan=2>{{ site.id }}</td>
             </tr>
             <tr>
                 <th>Url</th>
-                <td>{{ site.url }}</td>
+                <td colspan=2>{{ site.url }}</td>
             </tr>
             <tr>
                 <th>EditDate</th>
@@ -26,21 +66,24 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ site.description }}</td>
+                <td colspan=2>{{ site.description }}</td>
             </tr>
             <tr>
                 <th>Keywords</th>
-                <td>{{ site.keywords }}</td>
+                <td colspan=2>{{ site.keywords }}</td>
             </tr>
-        </tbody>
     </table>
-
+    
+                      
     <a href="{{ path('app_site_index') }}">back to list</a>
 
     <a href="{{ path('app_site_edit', {'id': site.id}) }}">edit</a>
 
     {{ include('site/_delete_form.html.twig') }}
     <script>
-    accepted = {{ accepted }}
+    accepted = {{ accepted }};
+    waited = {{ waited }};
+    rejected = {{ rejected }};
+
     </script>
 {% endblock %}

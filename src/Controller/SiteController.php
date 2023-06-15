@@ -62,11 +62,21 @@ class SiteController extends AbstractController
     {
         $seoRepo = $entityManage->getRepository(Seo::class);
         $accpeted = sizeof($seoRepo->findBy(['site' => $site->getId(), 'response' => "oui"]));
+        $waited = sizeof($seoRepo->findBy(['site' => $site->getId(), 'response' => "en attente"]));
+        $rejected = sizeof($seoRepo->findBy(['site' => $site->getId(), 'response' => "non"]));
+        $seos= $seoRepo->findBy(['site' => $site->getId()],array(),10);
+        $seosite= $seoRepo->findBy(['site' => $site->getId()]);
+        $url = $site->getUrl();
+        $parsedUrl = parse_url($url);
+        $site_name = isset($parsedUrl['host']) ? $parsedUrl['host'] : $site->getUrl();
         return $this->render('site/show.html.twig', [
             'site' => $site,
             'accepted' => $accpeted,
-            'waited' => 3,
-            'rejected' => 1
+            'waited' => $waited,
+            'rejected' => $rejected,
+            'seos'=>$seos,
+            'seosite'=>$seosite,
+            'site_name'=>$site_name
         ]);
     }
 

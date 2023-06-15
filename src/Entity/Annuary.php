@@ -20,7 +20,7 @@ class Annuary
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=500, unique=true)
      */
     private $url;
 

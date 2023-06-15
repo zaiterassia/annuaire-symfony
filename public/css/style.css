@@ -77,6 +77,11 @@ table {
     color: #666;
 }
 
+.table-site{
+    width: 100%;
+    background: white;
+}
+
 .btn-xs {
     font-size: 0.7em !important;
     padding: 2px 5px !important;
@@ -1303,6 +1308,12 @@ footer.main-footer p {
 *     FORMS ELEMENTS
 * ==========================================================
 */
+
+.title-show{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 44%;
+}
 
 label {
     font-size: .9rem;
@@ -3434,6 +3445,11 @@ a>code {
 .sorting_asc {
     max-width: 300px;
 }
+
+.check-icon{
+    display: inline;
+    width: 10px;
+}
   
 .password-icon .feather-eye-off {
     display: none;
@@ -3463,6 +3479,25 @@ a>code {
     color: darkgray !important;
   }
 
+  .list-annuary{
+    height: 335px;
+    overflow: auto;
+  }
+
+  .list-annuary::-webkit-scrollbar {
+    width: 4px;
+    
+  }
+
+  .list-annuary::-webkit-scrollbar-track {
+    background: gray;
+  }
+
+  .list-annuary::-webkit-scrollbar-thumb {
+    background-color: #ff7f00 ;
+    border-radius: 20px;
+    border: 3px #ff7f00 ;
+  }
 @media (min-width: 576px) {
     .card-deck {
         margin-right: -15px;

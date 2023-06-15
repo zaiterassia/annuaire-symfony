@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.0"
+   width="512.000000pt"
+   height="512.000000pt"
+   viewBox="0 0 512.000000 512.000000"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg6"
+   sodipodi:docname="caution.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt"
+     showgrid="false"
+     inkscape:zoom="1.2260742"
+     inkscape:cx="340.92553"
+     inkscape:cy="341.74114"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+     fill="#000000"
+     stroke="none"
+     id="g4"
+     style="fill:#ffc107;fill-opacity:1">
+    <path
+       d="M2404 4956 c-79 -18 -169 -55 -241 -97 -68 -41 -175 -145 -224 -220 -52 -77 -1858 -3402 -1887 -3472 -88 -217 -57 -487 79 -687 110 -160 257 -263 444 -310 79 -19 112 -20 1985 -20 1873 0 1906 1 1985 20 157 40 296 126 398 248 56 67 130 212 152 297 37 146 27 318 -27 452 -44 107 -1860 3435 -1916 3511 -91 122 -222 213 -377 262 -90 28 -281 36 -371 16z m282 -1240 c61 -28 115 -82 146 -145 l23 -46 0 -825 c0 -818 0 -825 -21 -871 -30 -63 -79 -116 -138 -147 -44 -23 -63 -27 -136 -27 -73 0 -92 4 -136 27 -59 31 -108 84 -138 147 -21 46 -21 53 -21 871 l0 825 23 46 c75 153 245 214 398 145z m0 -2400 c61 -28 115 -82 146 -145 31 -62 32 -176 2 -242 -29 -63 -79 -116 -138 -147 -44 -23 -63 -27 -136 -27 -73 0 -92 4 -136 27 -59 31 -109 84 -138 147 -30 66 -29 180 2 242 75 153 245 214 398 145z"
+       id="path2"
+       style="fill:#ffc107;fill-opacity:1" />
+  </g>
+</svg>

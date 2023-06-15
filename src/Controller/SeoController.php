@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Seo;
+use App\Entity\Site;
 use App\Form\SeoType;
 use App\Repository\SeoRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,12 +23,15 @@ class SeoController extends AbstractController
     public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
         $response = $request->query->get('response');
-
+        $siteId = $request->query->get('id');
         if ($response === 'accepted') {
             $seos = $entityManager->getRepository(Seo::class)->findBy(['response' => 'oui']);
         } elseif ($response === 'pending') {
             $seos = $entityManager->getRepository(Seo::class)->findBy(['response' => 'en attente']);
-        } else {
+        }elseif($response === 'site'){
+            $seos = $entityManager->getRepository(Seo::class)->findBy(['site'=> $siteId]);;
+        } 
+        else {
             // Si aucun paramètre n'est spécifié, affichez tous les résultats
             $seos = $entityManager
             ->getRepository(Seo::class)

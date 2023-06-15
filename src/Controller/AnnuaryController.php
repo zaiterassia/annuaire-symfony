@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+
 
 /**
  * @Route("/annuary")
@@ -40,14 +42,18 @@ class AnnuaryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            try{
             $annuary->setDateEdit(new \DateTime('now'));
             $annuary->setAuthor($this->getUser());
             $entityManager->persist($annuary);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_annuary_index', [], Response::HTTP_SEE_OTHER);
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash('error', 'Cet annuaire existe déjà !');
+            }
         }
-
+        
         return $this->renderForm('annuary/new.html.twig', [
             'annuary' => $annuary,
             'form' => $form,
