@@ -82,6 +82,29 @@ table {
     background: white;
 }
 
+.footer-show{
+    padding-left: 47%;
+}
+
+.img-footer-show{
+    padding-top: 4px;
+    width: 20px;
+    margin-right: 8px;
+}
+
+.img-footer-show-delete{
+    padding-top: 4px;
+    padding-bottom: 2px;
+    width: 20px;
+    margin-right: 8px;
+}
+
+.btn-delete-show-site{
+    padding-bottom: 0px !important;
+    padding-top: 2px !important;
+    padding-right: 1px !important;
+}
+
 .btn-xs {
     font-size: 0.7em !important;
     padding: 2px 5px !important;

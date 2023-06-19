@@ -34,7 +34,7 @@
     </div>
         </td>
         <td>
-                {% if (accepted != 0) and (waited != 0) and (rejected != 0) %}
+                {% if (accepted != 0) or (waited != 0) or (rejected != 0) %}
                 <div class="col-lg-6">
                     <div class="card pie-chart-example" style="left: -9%; width: 166%;">
                       <div class="card-header d-flex align-items-center">
@@ -51,7 +51,7 @@
             </tr>   
         </table>
 
-            <table class="table">     
+            <table class="table table-striped">     
             <tr>
                 <th>Id</th>
                 <td colspan=2>{{ site.id }}</td>
@@ -73,13 +73,15 @@
                 <td colspan=2>{{ site.keywords }}</td>
             </tr>
     </table>
-    
-                      
-    <a href="{{ path('app_site_index') }}">back to list</a>
-
-    <a href="{{ path('app_site_edit', {'id': site.id}) }}">edit</a>
-
-    {{ include('site/_delete_form.html.twig') }}
+    <div class="footer-show">
+        <br>                  
+        <a href="{{ path('app_site_index') }}"><img src="{{ asset('img/bullet.svg') }}" class="img-footer-show">back to list</a>
+        <br> 
+        <a href="{{ path('app_site_edit', {'id': site.id}) }}"><img src="{{ asset('img/edit.svg') }}"class="img-footer-show">edit</a>
+        <br>
+            
+        {{ include('site/_delete_form.html.twig') }}
+    </div>
     <script>
     accepted = {{ accepted }};
     waited = {{ waited }};
